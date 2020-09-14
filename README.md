@@ -19,6 +19,13 @@ Things you may want to cover:
 | nickname              |  string               | null:false                               |
 | email                 |  string               | null:false                               |
 | password              |  string               | null:false                               |
+| birthday              |  date     　　　       | null:false
+| first_name_kana       |  string               | null:false                               |
+| last_name_kana        |  string               | null:false                               |
+| first_name            |  string               | null:false                               |
+| last_name             |  string               | null:false                               |
+| password confirmation |  string               | null:false                               |
+
 
 
 ###Association
@@ -30,42 +37,45 @@ Things you may want to cover:
 | Culumn                | Type                  | Options                                  |
 | --------------------- | --------------------- |------------------------------------------|
 | name                  |  string               | null:false                               |
-| images                |  interger             | null:false                               |
-| caregory              |  integer              | null:false                               |
-| condition             |  integer              | null:false                               |
+| caregory_id           |  integer              | null:false                               |
+| condition_id          |  integer              | null:false                               |
 | description_item      |  text                 | null:false                               |
 | price                 |  integer              | null:false                               |
-| schedule_item         |  integer              | null:false                               |
-| prefecture            |  integer              | null:false                               |
-| shoppig_fee           |  integer              | null:false                               |
-| user_id               |  references           | null:false  foreign_key: true                             |
+| schedule_item_id      |  integer              | null:false                               |
+| prefecture_id         |  integer              | null:false                               |
+| shoppig_fee_id        |  integer              | null:false                               |
+| user                  |  references           | null:false  foreign_key: true            |
 
 
  ###association
  
- - has_one :author
+ - belongs_to :purchases
+ - belongs_to :user
  
  
 ##purchaseテーブル
 | Culumn                | Type                  | Options                                  |
-| --------------------- | --------------------- |------------------------------------------|
-| creddit_card_number   |  integer              | null:false                               |                     
-| expiration_date       |  date                 | null:false                               |
-| security_code         |  integer              | null:false                               |
-| postal_code           |  integer              | null:false                               |
-| prefecture            |  string               | null:false                               |
+| --------------------- | --------------------- |----------------------------------------- |
+| postal_code           |  string               | null:false                               |
+| prefecture_id         |  integer              | null:false                               |
 | municipality          |  string               | null:false                               |
-| address               |  string               | null:false                               |
-| building_name         |  string               | null:false                               |
-| phone_number          |  integer              | null:false                               |
-| user_id               |  references           | null:false    foreign_key: true          |
-| item_id               |  references           | null:false    foreign_key: true          |
+| address  　　　   　　　|  string               | null:false                               |
+| building_name         |  string               |                                          |
 
 
 ###association
 
--has_many :users
+-belongs_to :user
 -belongs_to :item
+
+
+##addressesテーブル
+| phone_number          |  string               | null:false                               |
+| user                  |  references           | null:false    foreign_key: true          |
+| item                  |  references           | null:false    foreign_key: true          |
+
+
+
 
 * Database initialization
 
