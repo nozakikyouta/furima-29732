@@ -31,7 +31,7 @@ Things you may want to cover:
 
 - has_many :items
 - has_many :addresses
-- belongs_to:user
+- belongs_to :purchase
 
 ##itemsテーブル
 | Culumn                | Type                  | Options                                  |
@@ -49,8 +49,6 @@ Things you may want to cover:
 
  ###association
  
- ActiveHash::Associations::ActiveRecordExtensions
- - belongs_to_active_hash :addresses
  - belongs_to :user
  - has_one:purchase
  
@@ -68,20 +66,18 @@ Things you may want to cover:
 | item                  |  references           | null:false    foreign_key: true          |
 
 ###association
-ActiveHash::Associations::ActiveRecordExtensions
-- belongs_to_active_hash :item
+
 - belongs_to :purchase
 
 
 ##purchasesテーブル
 | Culumn                | Type                  | Options                                  |
 | --------------------- | --------------------- |----------------------------------------- |
-| user                  |  references           | null:false    foreign_key: true          |
-| item                  |  references           | null:false    foreign_key: true          |
+| purchase              |  references           | null:false    foreign_key: true          |
+
 
 ###association
-
-- has_one :addresses
+- has_one :address
 - belongs_to :item
 - belongs_to :user
 
