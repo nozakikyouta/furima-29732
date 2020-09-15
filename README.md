@@ -31,6 +31,7 @@ Things you may want to cover:
 
 - has_many :items
 - has_many :addresses
+- belongs_to:user
 
 ##itemsテーブル
 | Culumn                | Type                  | Options                                  |
