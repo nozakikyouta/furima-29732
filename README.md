@@ -30,8 +30,7 @@ Things you may want to cover:
 ###Association
 
 - has_many :items
-- has_many :addresses
-- belongs_to :purchase
+- belongs_to :purchases
 
 ##itemsテーブル
 | Culumn                | Type                  | Options                                  |
@@ -62,8 +61,8 @@ Things you may want to cover:
 | address  　　　   　　　|  string               | null:false                               |
 | building_name         |  string               |                                          |
 | phone_number          |  string               | null:false                               |
-| user                  |  references           | null:false    foreign_key: true          |
-| item                  |  references           | null:false    foreign_key: true          |
+| purchase              |  references           | null:false    foreign_key: true          |
+
 
 ###association
 
@@ -73,7 +72,8 @@ Things you may want to cover:
 ##purchasesテーブル
 | Culumn                | Type                  | Options                                  |
 | --------------------- | --------------------- |----------------------------------------- |
-| purchase              |  references           | null:false    foreign_key: true          |
+| user                  |  references           | null:false    foreign_key: true          |
+| item                  |  references           | null:false    foreign_key: true          |
 
 
 ###association
