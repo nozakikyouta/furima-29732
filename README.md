@@ -30,7 +30,7 @@ Things you may want to cover:
 ###Association
 
 - has_many :items
-- has_one :purchases
+- has_one :purchase
 
 ##itemsテーブル
 | Culumn                | Type                  | Options                                  |
