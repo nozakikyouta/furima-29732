@@ -78,7 +78,8 @@ Things you may want to cover:
 | item                  |  references           | null:false    foreign_key: true          |
 
 ###association
-has_many :purchases
+
+-has_many :purchases
 
 
 
