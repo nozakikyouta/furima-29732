@@ -67,12 +67,18 @@ Things you may want to cover:
 
 -belongs_to :user
 -belongs_to :item
+-belongs_to :address
 
 
 ##addressesテーブル
+| Culumn                | Type                  | Options                                  |
+| --------------------- | --------------------- |----------------------------------------- |
 | phone_number          |  string               | null:false                               |
 | user                  |  references           | null:false    foreign_key: true          |
 | item                  |  references           | null:false    foreign_key: true          |
+
+###association
+has_many :purchases
 
 
 
