@@ -24,14 +24,13 @@ Things you may want to cover:
 | last_name_kana        |  string               | null:false                               |
 | first_name            |  string               | null:false                               |
 | last_name             |  string               | null:false                               |
-| password confirmation |  string               | null:false                               |
 
 
 
 ###Association
 
 - has_many :items
-- has_many :purchases
+- has_many :addresses
 
 ##itemsテーブル
 | Culumn                | Type                  | Options                                  |
@@ -49,11 +48,12 @@ Things you may want to cover:
 
  ###association
  
- - belongs_to :purchases
+ ActiveHash::Associations::ActiveRecordExtensions
+ - belongs_to_active_hash :addresses
  - belongs_to :user
  
  
-##purchaseテーブル
+##addressesテーブル
 | Culumn                | Type                  | Options                                  |
 | --------------------- | --------------------- |----------------------------------------- |
 | postal_code           |  string               | null:false                               |
@@ -61,25 +61,22 @@ Things you may want to cover:
 | municipality          |  string               | null:false                               |
 | address  　　　   　　　|  string               | null:false                               |
 | building_name         |  string               |                                          |
-
+| phone_number          |  string               | null:false                               |
 
 ###association
-
--belongs_to :user
--belongs_to :item
--belongs_to :address
+ActiveHash::Associations::ActiveRecordExtensions
+-belongs_to_active_hash :item
 
 
-##addressesテーブル
+##purchasesテーブル
 | Culumn                | Type                  | Options                                  |
 | --------------------- | --------------------- |----------------------------------------- |
-| phone_number          |  string               | null:false                               |
 | user                  |  references           | null:false    foreign_key: true          |
 | item                  |  references           | null:false    foreign_key: true          |
 
 ###association
 
--has_many :purchases
+-has_many :addresses
 
 
 
