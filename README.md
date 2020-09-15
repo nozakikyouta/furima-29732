@@ -51,6 +51,7 @@ Things you may want to cover:
  ActiveHash::Associations::ActiveRecordExtensions
  - belongs_to_active_hash :addresses
  - belongs_to :user
+ - has_one:purchase
  
  
 ##addressesテーブル
@@ -62,10 +63,13 @@ Things you may want to cover:
 | address  　　　   　　　|  string               | null:false                               |
 | building_name         |  string               |                                          |
 | phone_number          |  string               | null:false                               |
+| user                  |  references           | null:false    foreign_key: true          |
+| item                  |  references           | null:false    foreign_key: true          |
 
 ###association
 ActiveHash::Associations::ActiveRecordExtensions
--belongs_to_active_hash :item
+- belongs_to_active_hash :item
+- belongs_to :purchase
 
 
 ##purchasesテーブル
@@ -76,7 +80,10 @@ ActiveHash::Associations::ActiveRecordExtensions
 
 ###association
 
--has_many :addresses
+- has_one :addresses
+- belongs_to :item
+- belongs_to :user
+
 
 
 
