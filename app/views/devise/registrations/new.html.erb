@@ -1,7 +1,7 @@
 <%= render "shared/second-header"%>
 
 <%# 「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
-<%= form_with model: ＠users, url: "/posts", class: 'registration-main', local: true do |f| %>
+<%= form_with model:@user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 <%# //「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
 <div class='form-wrap'>
   <div class='form-header'>
@@ -9,6 +9,8 @@
       会員情報入力
     </h1>
   </div>
+
+
 
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
   <%# render 'shared/error_messages', model: f.object %>
@@ -38,7 +40,7 @@
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">passeord_confirmation</label>
+      <label class="form-text">パスワード（確認）</label>
       <span class="indispensable">必須</span>
     </div>
     <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
@@ -53,7 +55,7 @@
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text"></label>
+      <label class="form-text">お名前(全角)</label>
       <span class="indispensable">必須</span>
     </div>
     <div class='input-name-wrap'>
