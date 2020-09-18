@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if current_user.update(user_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def update
@@ -18,8 +22,10 @@ class UsersController < ApplicationController
     end
 
   private
-
-  def user_params
-  params.require(:user).permit(:name, :email)
-  end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :first_name ])
+    end
+    def user_params
+      params.require(:user).permit(:name, :email)
+    end
 end
