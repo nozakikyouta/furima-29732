@@ -7,11 +7,12 @@ class User < ApplicationRecord
     with_options presence: true do
       validates :nickname
       validates :email, uniqueness: true
-      validates :password, format: {with:/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, length: { minimum: 6 } , confirmation: true,}
+      validates :password, length: { minimum: 6 }, confirmation: true, format: {with: /\A[a-zA-Z0-9]+\z/}
+      validates :password_confirmation
       validates :first_name, format: { with:/\A[ぁ-んァ-ン一-龥]/}
       validates :last_name, format: { with:/\A[ぁ-んァ-ン一-龥]/}
       validates :first_name_kana, format: { with:/\A[ァ-ヶー－]+\z/}
-      validates :first_name_kana,format: { with: /\A[ァ-ヶー－]+\z/}
+      validates :last_name_kana,format: { with: /\A[ァ-ヶー－]+\z/}
       validates :birthday
     end
 end
