@@ -4,15 +4,15 @@ class DeviseCreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      # t.string :email,              null: false, default: "" 
+      # t.string :encrypted_password, null: false, default: ""
 
-      ## Recoverable
-      t.string   :reset_password_token
-      t.datetime :reset_password_sent_at
+      # ## Recoverable
+      # t.string   :reset_password_token
+      # t.datetime :reset_password_sent_at
 
-      ## Rememberable
-      t.datetime :remember_created_at
+      # ## Rememberable
+      # t.datetime :remember_created_at
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
@@ -36,8 +36,8 @@ class DeviseCreateItems < ActiveRecord::Migration[6.0]
       t.timestamps null: false
     end
 
-    add_index :items, :email,                unique: true
-    add_index :items, :reset_password_token, unique: true
+    # add_index :items, :email,                unique: true
+    # add_index :items, :reset_password_token, unique: true
     # add_index :items, :confirmation_token,   unique: true
     # add_index :items, :unlock_token,         unique: true
   end
