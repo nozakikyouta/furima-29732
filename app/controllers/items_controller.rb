@@ -1,12 +1,8 @@
 class ItemsController < ApplicationController
-  
-  def index
-    @items =Item.all
-  end
 
-  def new
-    @item= Item.new
-  end
+  # def new
+  #   @item= Item.new
+  # end
   
   def create
     @item = Item.new(item_params)
@@ -17,12 +13,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @items =Item.all
-  end
-  def update
-    @items =Item.all
-  end
+  # def show
+  #   @items =Item.all
+  # end
+  # def update
+  #   @items =Item.all
+  # end
 
   private
   def item_params

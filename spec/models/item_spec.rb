@@ -96,11 +96,17 @@ require 'rails_helper'
             @item.valid?
             expect(@item.errors.full_messages).to include("Price half-width number")
           end
-          it "価格の範囲が３００〜９９９９９９９９以外だと登録できない" do
+          it "価格の範囲が３００未満だと登録できない" do
             @item.price = 200
             @item.valid?
             expect(@item.errors.full_messages).to include("Price half-width number")
           end
+          it "価格の範囲が９９９９９９９９以上だと登録できない" do
+            @item.price = 9999999999
+            @item.valid?
+            expect(@item.errors.full_messages).to include("Price half-width number")
+          end
+
         end
     end
   end

@@ -17,9 +17,11 @@ class Item < ApplicationRecord
           validates :description_item
           validates :price,format: {with:/\A[0-9]+\z/,message: "out of setting range"}, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 99999999, message: "half-width number"}
         end
-          validates :category_id, numericality:{ other_than: 0, message: "id Select"}
-          validates :condition_id, numericality:{ other_than: 0, message: "id Select"}
-          validates :schedule_item_id, numericality:{ other_than: 0, message:"id Select"}
-          validates :prefecture_id, numericality:{ other_than: 0, message:"id Select"}
-          validates :shopping_fee_id, numericality:{ other_than: 0,message: "id Select"}
+        with_options numericality: {other_than: 0 ,message: "id Select"}do
+          validates :category_id
+          validates :condition_id
+          validates :schedule_item_id 
+          validates :prefecture_id
+          validates :shopping_fee_id
+        end
 end
