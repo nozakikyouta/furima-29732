@@ -1,12 +1,6 @@
 class ShoppingFee < ActiveHash::Base
   self.data = [
     {id: 0, name: '---'},
-    {id: 1, name: 'レディース'},
-    {id: 2, name: 'メンズ'},
-    {id: 3, name: 'ベビー・キッズ'},
-    {id: 4, name: 'インテリ・住まい・子供'},
-    {id: 5, name: '本・音楽・ゲーム'},
-    {id: 6, name: 'おもちゃ・ホビー・グッズ'},
-    {id: 7, name: '家電・スマホ・カメラ'},
-    {id: 8, name: 'スポーツ・レジャー'}]
+    {id: 1, name: '着払い（購入者負担）'},
+    {id: 2, name: '送料込み（出品者負担）'}]
 end
