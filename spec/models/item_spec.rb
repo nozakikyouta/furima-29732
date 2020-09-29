@@ -9,46 +9,6 @@ require 'rails_helper'
         it "'すべての値が正しく入力すれば登録できる" do
           expect(@item).to be_valid
         end
-        it "商品の説明が必須であること" do
-          @item.description_item = "あ"
-          expect(@item).to be_valid
-        end
-        it "商品名があれば出品できる" do
-          @item.name = "a"
-          expect(@item).to be_valid
-        end
-        it "カテゴリーがあれば出品できる" do
-          @item.category_id = 1
-          expect(@item).to be_valid
-        end
-        it "商品の状態があれば出品できる" do
-          @item.condition_id = 1
-          expect(@item).to be_valid
-        end
-        it "配送料の負担があれば出品できる" do
-          @item.shopping_fee_id = 1
-          expect(@item).to be_valid
-        end
-        it "発送元の地域があれば出品できる" do
-          @item.prefecture_id = 1
-          expect(@item).to be_valid
-        end
-        it "発送までの日数があれば出品できる" do
-          @item.schedule_item_id = 1
-          expect(@item).to be_valid
-        end
-        it "価格があれば出品できる" do
-          @item.price = 3000
-          expect(@item).to be_valid
-        end
-        it "販売価格が半角数字のみ出品できる" do
-          @item.price = 3000
-          expect(@item).to be_valid
-        end
-        it "価格の範囲が300~99999999であれば出品できる" do
-          @item.price = 6000000
-          expect(@item).to be_valid
-        end
       end
         context '出品がうまくいかないとき' do
           it "商品の説明が空だと登録できない" do
