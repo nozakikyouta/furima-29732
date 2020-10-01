@@ -127,9 +127,14 @@
     <ul class='item-lists'>
         <%if @items.present?%>
           <% @items.each do |item| %>
-            <p><%= item.image%></p>
-            <p><%= item.price%></P>
-            <p><%= item.name%></p>
+             <div class="content_post" style="background-image: url(<%= item.image%>);"> 
+               <%# <p><%= item.image, %>
+               <%= image_tag item.image, class: 'item-image' if item.image.attached? %>
+                <p><%= item.price %></P>
+                <span class= "name">
+                  <p><%= item.name %></p>
+                </span>
+              </div>
           <%end%>
         <%else%>
           <li class='list'>
