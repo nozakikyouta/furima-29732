@@ -1,21 +1,28 @@
 class ItemsController < ApplicationController
 
-  def new
-    @item= Item.new
-  end
-  
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      render :new
+  # skip_before_action :login_required, only: [:show]
+    def index
+      @items = Item.includes(:user).order("created_at ASC")
     end
-  end
 
-  # def show
-  #   @items =Item.all
-  # end
+    def new
+      @item= Item.new
+    end
+  
+    def create
+       @item = Item.new(item_params)
+      if @item.save
+        redirect_to root_path
+      else
+      render :new
+      end
+    end
+
+    # def show
+    #   @items =Item.all
+    #   if @item.save
+    #   render:
+    # end
   # def update
   #   @items =Item.all
   # end
@@ -25,4 +32,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit( :image, :name , :description_item, :category_id, :condition_id, :prefecture_id, :schedule_item_id, :shopping_fee_id, :price).merge(user_id: current_user.id)
   end
 end
+
 
