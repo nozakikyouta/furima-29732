@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  # skip_before_action :login_required, only: [:show]
+  skip_before_action :login_required, only: [:show]
     def index
       @items = Item.includes(:user).order("created_at ASC")
     end
@@ -18,14 +18,18 @@ class ItemsController < ApplicationController
       end
     end
 
-    # def show
-    #   @items =Item.all
-    #   if @item.save
-    #   render:
-    # end
-  # def update
-  #   @items =Item.all
-  # end
+    def show
+      @item = Item.find(params[:id])
+    end
+ 
+    def edit
+      @item = Item.find(params[:id])
+    end
+
+    def destroy
+      @item = Item.find(params[:id])
+      @item.destroy
+    end
 
   private
   def item_params

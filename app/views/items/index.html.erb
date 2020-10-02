@@ -18,7 +18,7 @@
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
-
+ 
   <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
     <h2 class='title'>
@@ -125,24 +125,32 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
+
         <%if @items.present?%>
           <% @items.each do |item| %>
-          <li class ='list'>
-            <div class="content_post" style="background-image: url(<%= item.image%>);"> 
-               <%= image_tag item.image.variant(resize'125x180'), class: 'item-image' if item.image.attached? %>
-                <div class='item-info'>
-                  <h3 class='item-name'>
-                    <%= item.name %>
-                  </h3>
-                  <div class='item-price'>
-                    <span><%= item.price %>円<br>(税込み)</span>
-                      <div class='star-btn'>
-                        <%= image_tag "star.png", class:"star-icon" %>
-                          <span class='star-count'>0</span>
-                      </div>
+          <li class ='list'>             
+            <%= link_to item_path(item.id) do %>
+            <div class='item-img-content'>
+              <%= image_tag item.image, class: 'item-img' if item.image.attached? %>
+              <%# 商品が売れていればsold outを表示しましょう %>
+              <%# <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div> %>
+                <%# //商品が売れていればsold outを表示しましょう %>
+            </div>
+            <%end%>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br>(税込み)</span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                      <span class='star-count'>0</span>
                   </div>
                 </div>
-            </div>
+              </div>
           </li>
           <%end%>
         <%else%>
@@ -164,6 +172,7 @@
           </div>
           <% end %>
         <%end%>
+
     </ul>
   </div>
   <%# /商品一覧 %>
