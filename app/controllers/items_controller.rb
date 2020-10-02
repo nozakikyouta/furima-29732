@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  skip_before_action :login_required, only: [:show]
+  skip_before_action :authenticate_user! only: [:show, :index]
   before_action :set_item, only: [:show ,:edit]
+
   def index
     @items = Item.includes(:user).order('created_at ASC')
   end
@@ -37,4 +38,5 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
 end
