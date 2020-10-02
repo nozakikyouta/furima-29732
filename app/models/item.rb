@@ -17,7 +17,8 @@ class Item < ApplicationRecord
     validates :image
     validates :description_item
     validates :price, format: {with: /\A[0-9]+\z/, message: 'out of setting range'}, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 99_999_999, message: 'half-width number'}
-  with_options numericality: {other_than: 0, message: 'id Select'} do
+  end
+    with_options numericality: {other_than: 0, message: 'id Select'} do
     validates :category_id
     validates :condition_id
     validates :schedule_item_id
