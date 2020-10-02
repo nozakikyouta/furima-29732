@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       render:show
     else
-      render:show
+      render:edit
     end
   end
   def edit
