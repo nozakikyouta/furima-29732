@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   skip_before_action :login_required, only: [:show]
+  before_action :set_item, only: [:show ,:edit]
   def index
     @items = Item.includes(:user).order('created_at ASC')
   end
@@ -18,11 +19,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def destroy
@@ -35,4 +34,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :description_item, :category_id, :condition_id, :prefecture_id, :schedule_item_id, :shopping_fee_id, :price).merge(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
 end
