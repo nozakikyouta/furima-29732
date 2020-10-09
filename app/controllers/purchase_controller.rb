@@ -1,9 +1,12 @@
 class PurchaseController < ApplicationController
   def index
-    # @item = Item.find(params[:item_id])
+    @item = Item.new
+    # @item.find(params[:item_id])
+     @item = Item.find(params[:item_id])
     @purchase = UserDonation.new
   end
  def create 
+  @item = Item.new(item_params)
   @purchase = UserDonation.new(purchase_params)
   if @purchase.valid?
    pay_item
@@ -13,17 +16,14 @@ class PurchaseController < ApplicationController
     render action: :index
   end
  end
-    # @purchase = UserDonation.new
-    # @purchase.token = "tok_0000000000"
-    # puts @purchase.token
     
   private
-  # def purchase_params
-  #   params.require(:item).permit(:image, :name, :description_item, :category_id, :condition_id, :prefecture_id, :schedule_item_id, :shopping_fee_id, :price)
-  # end
-  def purchase_params
-    params.require(:user_donation).permit(:postal_code,:prefecture_id,:municipality,:address,:building_name,:phone_number,:purchase,:token).merge(token: params[:token])
-  end
+    def item_params
+      params.permit(:image, :name, :description_item, :category_id, :condition_id, :prefecture_id, :schedule_item_id, :shopping_fee_id, :price,:user).merge(user_id: current_user.id)
+    end
+    def purchase_params
+      params.require(:user_donation).permit(:postal_code,:prefecture_id,:municipality,:address,:building_name,:phone_number,:purchase,:token).merge(token: params[:token])
+    end
 
   def pay_item
   Payjp.api_key = "sk_test_75e5f42138e7299f199ec568"  

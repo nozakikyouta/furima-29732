@@ -8,7 +8,7 @@ class Address < ApplicationRecord
     validates :municipality
     validates :address
     validates :building_name
-    validates :phone_number
+    validates :phone_number ,format:{with:/\A\d{11}\z/,message: ""}
   end
 
   validates :building_name
