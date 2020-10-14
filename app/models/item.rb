@@ -7,7 +7,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :schedule_item
   belongs_to_active_hash :shopping_fee
-
+ 
+  
   belongs_to :user
   has_one_attached :image
   has_one :purchase
