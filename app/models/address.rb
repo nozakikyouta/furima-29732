@@ -10,6 +10,4 @@ class Address < ApplicationRecord
     validates :building_name
     validates :phone_number ,format:{with:/\A\d{11}\z/,message: ""}
   end
-
-  validates :building_name
 end

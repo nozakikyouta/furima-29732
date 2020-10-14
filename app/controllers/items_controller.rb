@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('created_at ASC')
+    # @purchase = Purchase.find(purchase_params)
+    # purchase = Purchase.all
   end
 
   def new
@@ -41,9 +43,11 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:user,:name, :image, :name, :description_item, :category_id, :condition_id, :prefecture_id, :schedule_item_id, :shopping_fee_id, :price).merge(user_id: current_user.id,purchase_id: params[:purchase_id])
+    params.require.permit(:user,:name, :image, :name, :description_item, :category_id, :condition_id, :prefecture_id, :schedule_item_id, :shopping_fee_id, :price).merge(user_id: current_user.id,purchase_id: params[:purchase_id])
   end
-
+  # def purchase_params
+  #   params.permit(:user_id,:item_id).merge(purchase_id:params[:purchase_id])
+  # end
   def set_item
     @item = Item.find(params[:id])
   end
