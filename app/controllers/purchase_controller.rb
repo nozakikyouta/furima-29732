@@ -1,12 +1,10 @@
 class PurchaseController < ApplicationController
   def index
     @item = Item.new
-    # @item.find(params[:item_id])
      @item = Item.find(params[:item_id])
     @purchase = UserDonation.new
   end
  def create 
-  # @item = Item.new(item_params)
   @purchase = UserDonation.new(purchase_params)
   if@purchase.valid?
     pay_item
@@ -16,10 +14,7 @@ class PurchaseController < ApplicationController
     render action: :index
   end
  end
-#  def update
-#   @purchase = Purchase.find(params[:id])
-#   @purchase.update(purchase_id: current_user.id)  
-#  end
+
   private
     def item_params
       params.permit(:image, :name, :description_item, :category_id, :condition_id, :prefecture_id, :schedule_item_id, :shopping_fee_id, :price,:user_id).merge(user_id: current_user.id)
