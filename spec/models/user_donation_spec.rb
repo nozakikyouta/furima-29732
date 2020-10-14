@@ -9,6 +9,9 @@ require 'rails_helper'
      	it "すべての値が正しく入力すれば購入できる" do
         expect(@user_donation).to be_valid
       end
+      it "建物番号がない時でも購入がうまくいく" do
+        expect(@user_donation).to be_valid
+      end
     end
     context'購入ができないとき' do
       it '郵便番号が空だと購入できない' do
@@ -50,8 +53,7 @@ require 'rails_helper'
           @user_donation.token  = " "
           @user_donation.valid?
           expect(@user_donation.errors.full_messages).to include("Token can't be blank")
-    end
-        
+      end
     end
   end
 end
