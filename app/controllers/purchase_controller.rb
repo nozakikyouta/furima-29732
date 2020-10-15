@@ -2,6 +2,7 @@ class PurchaseController < ApplicationController
   def index
     @item = Item.new
     @purchase = UserDonation.new
+    @item = Item.find(params[:item_id])
   end
  def create 
   @purchase = UserDonation.new(purchase_params)
@@ -16,6 +17,7 @@ class PurchaseController < ApplicationController
  end
 
   private
+  
     def item_params
       params.permit(:image, :name, :description_item, :category_id, :condition_id, :prefecture_id, :schedule_item_id, :shopping_fee_id, :price,:user_id).merge(user_id: current_user.id)
     end
