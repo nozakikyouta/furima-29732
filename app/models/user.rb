@@ -10,7 +10,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :email, uniqueness: true
-    validates :password, length: { minimum: 6 }, confirmation: true, format: {with: /\A[a-zA-Z0-9]+\z/}
+    validates :password, length: { minimum: 6 }, confirmation: true, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
     validates :password_confirmation
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Full-width characters'}
     validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Full-width characters'}
