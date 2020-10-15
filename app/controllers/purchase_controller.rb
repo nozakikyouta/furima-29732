@@ -3,6 +3,7 @@ class PurchaseController < ApplicationController
     @item = Item.new
     @purchase = UserDonation.new
     @item = Item.find(params[:item_id])
+    redirect_to root_path
   end
  def create 
   @purchase = UserDonation.new(purchase_params)
