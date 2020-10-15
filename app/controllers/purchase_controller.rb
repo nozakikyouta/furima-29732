@@ -17,6 +17,7 @@ class PurchaseController < ApplicationController
   end
  end
 
+ 
   private
   
     def item_params
