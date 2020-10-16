@@ -1,9 +1,12 @@
 class PurchaseController < ApplicationController
+  before_action :move_to_index, except: [:index]
   def index
     @item = Item.new
+    if @item.purchase !=nil || @item.user_id  != current_user.id
+      redirect_to root_path
+    end
     @purchase = UserDonation.new
     @item = Item.find(params[:item_id])
-    redirect_to root_path
   end
  def create 
   @purchase = UserDonation.new(purchase_params)
@@ -17,7 +20,6 @@ class PurchaseController < ApplicationController
   end
  end
 
- 
   private
   
     def item_params
@@ -26,6 +28,13 @@ class PurchaseController < ApplicationController
     def purchase_params
       params.require(:user_donation).permit(:postal_code,:prefecture_id,:municipality,:address,:building_name,:phone_number,:purchase,:token).merge(token: params[:token],user_id:current_user.id, item_id: params[:item_id])
     end
+
+    def move_to_index
+      unless purchase_id != nil
+        redirect_to root_path
+      end
+    end
+
 
   def pay_item
     @item = Item.find(params[:item_id])
