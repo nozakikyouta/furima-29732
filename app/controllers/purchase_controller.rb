@@ -1,5 +1,5 @@
 class PurchaseController < ApplicationController
-  before_action :move_to_index, except: [:index]
+ 
   def index
     @item = Item.find(params[:item_id])
     if @item.purchase!=nil || @item.user_id == current_user.id
@@ -28,11 +28,11 @@ class PurchaseController < ApplicationController
       params.require(:user_donation).permit(:postal_code,:prefecture_id,:municipality,:address,:building_name,:phone_number,:purchase,:token).merge(token: params[:token],user_id:current_user.id, item_id: params[:item_id])
     end
 
-    def move_to_index
-      unless purchase_id != nil
-        redirect_to root_path
-      end
-    end
+    # def move_to_index
+    #   unless purchase_id != nil
+    #     redirect_to root_path
+    #   end
+    # end
 
 
   def pay_item
