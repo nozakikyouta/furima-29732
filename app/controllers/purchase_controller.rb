@@ -1,12 +1,11 @@
 class PurchaseController < ApplicationController
   before_action :move_to_index, except: [:index]
   def index
-    @item = Item.new
-    if @item.purchase !=nil || @item.user_id  != current_user.id
+    @item = Item.find(params[:item_id])
+    if @item.purchase!=nil || @item.user_id == current_user.id
       redirect_to root_path
     end
     @purchase = UserDonation.new
-    @item = Item.find(params[:item_id])
   end
  def create 
   @purchase = UserDonation.new(purchase_params)
